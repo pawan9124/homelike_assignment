@@ -10,6 +10,7 @@ class HomeView extends React.Component {
 
   render() {
     let { apartmentsList } = this.props;
+    console.log("apartmentsList", apartmentsList);
     if (!Object.keys(apartmentsList).length) {
       return <div>Loading...</div>;
     }

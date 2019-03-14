@@ -28,5 +28,5 @@ class App extends Component {
     );
   }
 }
-
+//added hot reloading
 export default hot(module)(App);
