@@ -1,17 +1,18 @@
 import React from "react";
 import ApartmentAmentityView from "./ApartmentAmentityView";
+import { Link } from "react-router-dom";
 
 export default class ApartmentTileView extends React.Component {
   render() {
     let { apartment } = this.props;
     let url = "/apartments/" + apartment._id;
     let image =
-      "http://localhost:5000/images/apartments/" + apartment.images[0];
+      "http://localhost:9000/images/apartments/" + apartment.images[0];
 
     return (
       <div className="view-apartment-item">
         <div className="view-apartment-item-content">
-          <a target="_blank" href={url}>
+          <Link to={url}>
             <div className="_3im4pDXrDfzNRT2AlvLfD6">
               <div className="listing-image">
                 <div
@@ -65,7 +66,7 @@ export default class ApartmentTileView extends React.Component {
                 </div>
               </div>
             </div>
-          </a>
+          </Link>
         </div>
       </div>
     );

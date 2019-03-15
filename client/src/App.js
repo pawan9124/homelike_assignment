@@ -6,6 +6,7 @@ import HomeView from "./views/HomeView";
 import client from "./ApolloClient";
 import store from "./store";
 import ApartmentView from "./views/ApartmentView";
+import Locations from "./views/Locations";
 import { hot } from "react-hot-loader";
 
 class App extends Component {
@@ -20,6 +21,11 @@ class App extends Component {
                 exact
                 path="/apartments/:apartmentId"
                 component={ApartmentView}
+              />
+              <Route
+                exact
+                path="/search/:location/:locationId"
+                component={Locations}
               />
             </div>
           </Router>
