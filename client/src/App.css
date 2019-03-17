@@ -85,3 +85,69 @@ input::-webkit-calendar-picker-indicator {
 .btn-popover .btn-secondary {
   margin-right: 15px;
 }
+
+.container-fl .listing-image {
+  padding-bottom: 5%;
+  height: 500px !important;
+  max-height: 600px !important;
+}
+.listing-image img {
+  min-width: 100% !important;
+  min-height: 100% !important;
+  width: 30%;
+}
+.apartment-view-price {
+  bottom: 184px !important;
+}
+.title-display {
+  margin-top: -4%;
+}
+
+/* The grid: Four equal columns that floats next to each other */
+.image-column {
+  float: left;
+  width: 25%;
+  padding: 10px;
+}
+
+/* Style the images inside the grid */
+.image-column img {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.image-column img:hover {
+  opacity: 1;
+}
+
+/* Clear floats after the columns */
+.image-row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* The expanding image container */
+.container {
+  position: relative;
+  display: none;
+}
+
+/* Expanding image text */
+#imgtext {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  color: white;
+  font-size: 20px;
+}
+
+/* Closable button inside the expanded image */
+.closebtn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  color: white;
+  font-size: 35px;
+  cursor: pointer;
+}

@@ -12,13 +12,17 @@ class Locations extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      filteredApartmentList: []
+      filteredApartmentList: [],
+      isFiltered: false
     };
     this.filterApartment = this.filterApartment.bind(this);
   }
 
   filterApartment(filteredApartments) {
-    this.setState({ filteredApartmentList: filteredApartments });
+    this.setState({
+      filteredApartmentList: filteredApartments,
+      isFiltered: true
+    });
   }
 
   componentDidMount() {
@@ -29,7 +33,7 @@ class Locations extends Component {
 
   render() {
     const apartments = this.props.apartments.items;
-    let { filteredApartmentList } = this.state;
+    let { filteredApartmentList, isFiltered } = this.state;
 
     if (this.props.match.params.locationId === "NA") {
       return <NotFound />;
@@ -40,29 +44,38 @@ class Locations extends Component {
 
     let showApartmentList = apartments;
     const sendApartmentList = apartments;
-    if (filteredApartmentList.length > 0) {
+    if (filteredApartmentList.length > 0 && isFiltered) {
       showApartmentList = filteredApartmentList;
+    }
+    let returnApartment = (
+      <div className="row">
+        {showApartmentList.map((item, index) => (
+          <ApartmentTileView key={index} apartment={item} />
+        ))}
+      </div>
+    );
+    if (filteredApartmentList.length === 0 && isFiltered) {
+      returnApartment = <h3>Sorry, no apartments under your filter.</h3>;
     }
     return (
       <div>
-        <div className="apartment-header">
-          <span className="apartment-count">{apartments.length}</span>&nbsp;
-          <label>apartments available in </label> &nbsp;
-          <span className="location-name">
-            {this.props.match.params.location}
-          </span>
-        </div>
         <div className="container-list container-lg clearfix">
           <SearchPage
             apartmentList={sendApartmentList}
             filterApartment={this.filterApartment}
           />
           <div className="col-12 float-left">
-            <div className="view-apartment-list">
-              {showApartmentList.map((item, index) => (
-                <ApartmentTileView key={index} apartment={item} />
-              ))}
+            <div className="apartment-header mt-4">
+              <h4>
+                <span className="apartment-count">{apartments.length}</span>
+                &nbsp;
+                <label>apartments available in </label> &nbsp;
+                <span className="location-name">
+                  {this.props.match.params.location}
+                </span>
+              </h4>
             </div>
+            {returnApartment}
           </div>
         </div>
       </div>

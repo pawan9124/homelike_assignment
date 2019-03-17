@@ -40,7 +40,7 @@ class HomeView extends React.Component {
       showApartmentList = filteredApartmentList;
     }
     let returnApartment = (
-      <div className="view-apartment-list">
+      <div className="row">
         {showApartmentList.map((item, index) => (
           <ApartmentTileView key={index} apartment={item} />
         ))}

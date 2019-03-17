@@ -4,3 +4,6 @@ Refactor List
 1. Adding javascript enable message
 2. Problems of Users instead of profile and its returning data (Server Side)
 3. ApartmentTileView removing changing <a> to link
+4. adding switch to route for not found
+5. Arrange the apartment apartment
+6. Display page of apartment image
