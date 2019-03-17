@@ -6,8 +6,21 @@ import {
 import { connect } from "react-redux";
 import ApartmentTileView from "./ApartmentTileView";
 import SearchPage from "./SearchPage";
+import NotFound from "./common/NotFound";
 
 class Locations extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      filteredApartmentList: []
+    };
+    this.filterApartment = this.filterApartment.bind(this);
+  }
+
+  filterApartment(filteredApartments) {
+    this.setState({ filteredApartmentList: filteredApartments });
+  }
+
   componentDidMount() {
     if (this.props.match.params.locationId != "NA") {
       this.props.fetchApartmentByLocation(this.props.match.params.locationId);
@@ -15,10 +28,20 @@ class Locations extends Component {
   }
 
   render() {
-    console.log("Locations===>", this.props.apartments);
     const apartments = this.props.apartments.items;
+    let { filteredApartmentList } = this.state;
+
+    if (this.props.match.params.locationId === "NA") {
+      return <NotFound />;
+    }
     if (apartments === undefined) {
       return <div>Loading...</div>;
+    }
+
+    let showApartmentList = apartments;
+    const sendApartmentList = apartments;
+    if (filteredApartmentList.length > 0) {
+      showApartmentList = filteredApartmentList;
     }
     return (
       <div>
@@ -30,10 +53,13 @@ class Locations extends Component {
           </span>
         </div>
         <div className="container-list container-lg clearfix">
-          <SearchPage />
+          <SearchPage
+            apartmentList={sendApartmentList}
+            filterApartment={this.filterApartment}
+          />
           <div className="col-12 float-left">
             <div className="view-apartment-list">
-              {apartments.map((item, index) => (
+              {showApartmentList.map((item, index) => (
                 <ApartmentTileView key={index} apartment={item} />
               ))}
             </div>

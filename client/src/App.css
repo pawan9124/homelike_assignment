@@ -77,3 +77,11 @@ input::-webkit-calendar-picker-indicator {
   top: -3px;
   position: relative;
 }
+
+.btn-popover {
+  margin-top: 15px;
+}
+
+.btn-popover .btn-secondary {
+  margin-right: 15px;
+}

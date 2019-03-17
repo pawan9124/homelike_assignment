@@ -33,14 +33,21 @@ class SearchPage extends Component {
     e.preventDefault();
     let locationName = "NA";
     let locationId = "NA";
+    console.log("SearchQuer", this.state.searchQuery);
+
     const searchData = this.props.locations.location.filter(data => {
       if (data.title === this.state.searchQuery) return true;
     });
+    console.log("QueryTime", searchData);
     if (searchData.length > 0) {
       locationName = searchData[0].title;
       locationId = searchData[0]._id;
     }
-    this.props.history.push(`search/${locationName}/${locationId}`);
+    this.props.history.push("/");
+    setTimeout(() => {
+      console.log("HOLA");
+      this.props.history.push(`search/${locationName}/${locationId}`);
+    });
   }
 
   handleOnChange(e) {
@@ -107,10 +114,7 @@ class SearchPage extends Component {
               modifyApartmentList={this.modifyApartmentList}
             />
           </ul>
-          <form
-            className="form-inline my-2 my-lg-0"
-            onSubmit={this.handleSubmit}
-          >
+          <form className="form-inline my-2 my-lg-0">
             <input
               className="form-control mr-sm-2"
               type="text"
@@ -125,6 +129,7 @@ class SearchPage extends Component {
             <button
               className="btn btn-outline-success my-2 my-sm-0"
               type="submit"
+              onClick={this.handleSubmit}
             >
               Search
             </button>

@@ -8,6 +8,7 @@ class FilterBySlider extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.filterBySizefunction = this.filterBySizefunction.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
   filterBySizefunction() {
@@ -22,6 +23,13 @@ class FilterBySlider extends React.Component {
     });
     console.log("FilteredSize", filteredList);
     return filteredList;
+  }
+
+  closeModal() {
+    const element = document.getElementsByClassName(
+      "ant-popover-placement-bottomLeft"
+    );
+    element[0].classList.add("ant-popover-hidden");
   }
 
   handleSubmit() {
@@ -66,6 +74,7 @@ class FilterBySlider extends React.Component {
             type="button"
             className="btn btn-secondary"
             data-dismiss="modal"
+            onClick={this.closeModal}
           >
             Close
           </button>

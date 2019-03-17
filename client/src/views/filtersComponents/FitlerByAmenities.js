@@ -1,5 +1,5 @@
 import React from "react";
-import { Slider, Popover } from "antd";
+import { Popover } from "antd";
 import Checkbox from "./common/Checkbox";
 
 class FitlerByAmenities extends React.Component {

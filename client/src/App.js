@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
 import HomeView from "./views/HomeView";
 import client from "./ApolloClient";
+import NotFound from "./views/common/404";
 import store from "./store";
 import ApartmentView from "./views/ApartmentView";
 import Locations from "./views/Locations";
@@ -18,17 +19,20 @@ class App extends Component {
         <Provider store={store}>
           <Router>
             <div>
-              <Route exact path="/" component={HomeView} />
-              <Route
-                exact
-                path="/apartments/:apartmentId"
-                component={ApartmentView}
-              />
-              <Route
-                exact
-                path="/search/:location/:locationId"
-                component={Locations}
-              />
+              <Switch>
+                <Route exact path="/" component={HomeView} />
+                <Route
+                  exact
+                  path="/apartments/:apartmentId"
+                  component={ApartmentView}
+                />
+                <Route
+                  exact
+                  path="/search/:location/:locationId"
+                  component={Locations}
+                />
+                <Route component={NotFound} />
+              </Switch>
             </div>
           </Router>
         </Provider>

@@ -15,13 +15,7 @@ class FitlerByDetails extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.filterByDetails = this.filterByDetails.bind(this);
-    this.closeModal = this.closeModal.bind(this);
     this.handleClick = this.handleClick.bind(this);
-  }
-
-  closeModal() {
-    const element = document.getElementById("dropDownMenu");
-    element.classList.remove("show");
   }
 
   filterByDetails() {
@@ -126,6 +120,7 @@ class FitlerByDetails extends React.Component {
             type="button"
             className="btn btn-secondary"
             data-dismiss="modal"
+            onClick={this.hide}
           >
             Close
           </button>
@@ -147,6 +142,7 @@ class FitlerByDetails extends React.Component {
             title="Filter"
             content={content}
             trigger="click"
+            id="popover-id"
           >
             <a
               className="nav-link dropdown-toggle"

@@ -1,6 +1,6 @@
 import React from "react";
 import { Popover } from "antd";
-import Checkbox from "./common/Checkbox";
+import Checkbox from "../common/Checkbox";
 
 const servicesState = {
   concierge: false,
@@ -29,10 +29,7 @@ class FilterByCheckbox extends React.Component {
     this.closeModal = this.closeModal.bind(this);
   }
 
-  closeModal() {
-    const element = document.getElementById("dropDownMenu");
-    element.classList.remove("show");
-  }
+  closeModal() {}
 
   filterByDetails(selectedServices) {
     const apartmentList = this.props.apartmentList;
@@ -63,8 +60,6 @@ class FilterByCheckbox extends React.Component {
     });
 
     const finalList = this.filterByDetails(filtered);
-    const element = document.getElementById("dropDownMenu");
-    element.classList.remove("show");
     this.props.modifyApartmentList(finalList);
   }
 
