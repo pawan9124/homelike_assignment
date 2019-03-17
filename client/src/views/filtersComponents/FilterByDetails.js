@@ -1,4 +1,7 @@
 import React from "react";
+import { Button, Popover } from "antd";
+
+const ButtonGroup = Button.Group;
 
 class FitlerByDetails extends React.Component {
   constructor(props) {
@@ -44,15 +47,12 @@ class FitlerByDetails extends React.Component {
 
   handleSubmit() {
     const finalList = this.filterByDetails();
-    const element = document.getElementById("dropDownMenu");
-    element.classList.remove("show");
     this.props.modifyApartmentList(finalList);
   }
   handleClick(e, type) {
-    const element = document.getElementById("dropDownMenu");
-    element.classList.add("show");
     let value = this.state[e.target.name];
     console.log("VALUE", value);
+
     if (type === "add") {
       value++;
     }
@@ -60,185 +60,103 @@ class FitlerByDetails extends React.Component {
       value--;
     }
     console.log("taret", [e.target.name], type, value);
-
-    this.setState({ [e.target.name]: value });
+    if (value > 0) {
+      this.setState({ [e.target.name]: value });
+    }
   }
   handleChange(e) {
-    const element = document.getElementById("dropDownMenu");
-    element.classList.add("show");
     console.log("E", [e.target.name], e.target.value);
 
     this.setState({ [e.target.name]: !this.state[e.target.name] });
   }
   render() {
+    const content = (
+      <div className="col">
+        <label htmlFor="customRange2">Details</label>
+        {this.props.details.map((name, index) => {
+          return (
+            <div
+              className="col-sm-4 pull-right"
+              style={{ display: "flex", marginBottom: 15 }}
+              keys={"index" + index}
+            >
+              <div className="row">
+                <div className="col-sm-4">
+                  <label>{name.charAt(0).toUpperCase() + name.slice(1)}:</label>
+                </div>
+                <div className="col-sm-8">
+                  <div
+                    className="input-spinner pull-right"
+                    style={{
+                      display: "-webkit-inline-box",
+                      marginLeft: 35,
+                      marginTop: -3
+                    }}
+                  >
+                    <Button
+                      type="primary"
+                      onClick={e => this.handleClick(e, "dec")}
+                      icon="minus"
+                      name={name}
+                    />
+                    <input
+                      type="text"
+                      maxLength="2"
+                      value={this.state[name]}
+                      className="form-control  input-sm size-1 cat"
+                      id={name}
+                      name={name}
+                      style={{ border: "none", width: 30 }}
+                      onChange={this.handleChange}
+                    />
+                    <Button
+                      type="primary"
+                      onClick={e => this.handleClick(e, "add")}
+                      icon="plus"
+                      name={name}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+        <div className="btn-popover" style={{ marginLeft: 135 }}>
+          <button
+            type="button"
+            className="btn btn-secondary"
+            data-dismiss="modal"
+          >
+            Close
+          </button>
+          <button
+            type="button"
+            className="btn btn-primary"
+            onClick={this.handleSubmit}
+          >
+            Apply
+          </button>
+        </div>
+      </div>
+    );
     return (
       <React.Fragment>
         <li className="nav-item dropdown">
-          <a
-            className="nav-link dropdown-toggle"
-            href="#"
-            id="navbarDropdown"
-            role="button"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
+          <Popover
+            placement="bottomLeft"
+            title="Filter"
+            content={content}
+            trigger="click"
           >
-            Details
-          </a>
-          <div
-            className="dropdown-menu drop-down-size"
-            aria-labelledby="navbarDropdown"
-            id="dropDownMenu"
-          >
-            <div className="col">
-              <label htmlFor="customRange2">Select Details</label>
-              <div className="col-sm-4 pull-right">
-                <label>Bedrooms:</label>
-                <div className="input-spinner pull-right">
-                  <button
-                    className="btn btn-sm btn-info"
-                    type="button"
-                    onClick={e => this.handleClick(e, "dec")}
-                    name="bedrooms"
-                  >
-                    -
-                  </button>
-                  <input
-                    type="text"
-                    data-max="5"
-                    maxLength="2"
-                    data-min="0"
-                    value={this.state.bedrooms}
-                    className="form-control  input-sm size-1 cat"
-                    id="historySize"
-                    name="bedrooms"
-                    onChange={this.handleChange}
-                  />
-                  <button
-                    className="btn btn-sm btn-info"
-                    type="button"
-                    onClick={e => this.handleClick(e, "add")}
-                    name="bedrooms"
-                  >
-                    +
-                  </button>
-                </div>
-              </div>
-              <div className="col-sm-4 pull-right">
-                <label>Bathrooms:</label>
-                <div className="input-spinner pull-right">
-                  <button
-                    className="btn btn-sm btn-info"
-                    type="button"
-                    onClick={e => this.handleClick(e, "dec")}
-                    name="bathrooms"
-                  >
-                    -
-                  </button>
-                  <input
-                    type="text"
-                    data-max="5"
-                    maxLength="2"
-                    data-min="0"
-                    value={this.state.bathrooms}
-                    className="form-control  input-sm size-1 cat"
-                    id="historySize"
-                    name="bathrooms"
-                    onChange={this.handleChange}
-                  />
-                  <button
-                    className="btn btn-sm btn-info"
-                    type="button"
-                    onClick={e => this.handleClick(e, "add")}
-                    name="bathrooms"
-                  >
-                    +
-                  </button>
-                </div>
-              </div>
-              <div className="col-sm-4 pull-right">
-                <label>Rooms:</label>
-                <div className="input-spinner pull-right">
-                  <button
-                    className="btn btn-sm btn-info"
-                    type="button"
-                    onClick={e => this.handleClick(e, "dec")}
-                    name="rooms"
-                  >
-                    -
-                  </button>
-                  <input
-                    type="text"
-                    data-max="5"
-                    maxLength="2"
-                    data-min="0"
-                    value={this.state.rooms}
-                    className="form-control  input-sm size-1 cat"
-                    id="historySize"
-                    name="rooms"
-                    onChange={this.handleChange}
-                  />
-                  <button
-                    className="btn btn-sm btn-info"
-                    type="button"
-                    onClick={e => this.handleClick(e, "add")}
-                    name="rooms"
-                  >
-                    +
-                  </button>
-                </div>
-              </div>
-              <div className="col-sm-4 pull-right">
-                <label>Floor:</label>
-                <div className="input-spinner pull-right">
-                  <button
-                    className="btn btn-sm btn-info"
-                    type="button"
-                    onClick={e => this.handleClick(e, "dec")}
-                    name="floor"
-                  >
-                    -
-                  </button>
-                  <input
-                    type="text"
-                    data-max="5"
-                    maxLength="2"
-                    data-min="0"
-                    value={this.state.floor}
-                    className="form-control  input-sm size-1 cat"
-                    id="historySize"
-                    name="floor"
-                    onChange={this.handleChange}
-                  />
-                  <button
-                    className="btn btn-sm btn-info"
-                    type="button"
-                    onClick={e => this.handleClick(e, "add")}
-                    name="floor"
-                  >
-                    +
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div className="modal-footer modal-filters-buttons">
-              <button
-                type="button"
-                className="btn btn-secondary"
-                data-dismiss="modal"
-                onClick={this.closeModal}
-              >
-                Close
-              </button>
-              <button
-                type="button"
-                className="btn btn-primary"
-                onClick={this.handleSubmit}
-              >
-                Save changes
-              </button>
-            </div>
-          </div>
+            <a
+              className="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+            >
+              Details
+            </a>
+          </Popover>
         </li>
       </React.Fragment>
     );

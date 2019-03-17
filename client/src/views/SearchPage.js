@@ -5,10 +5,8 @@ import {
 } from "../actions/locationActions";
 import { withRouter } from "react-router";
 import { connect } from "react-redux";
-import FilterBySize from "./filtersComponents/FilterBySize";
-import FilterByPrice from "./filtersComponents/FilterByPrice";
-import FitlerByAmenities from "./filtersComponents/FitlerByAmenities";
-import FilterByServices from "./filtersComponents/FilterByServices";
+import FilterBySlider from "./filtersComponents/FilterBySlider";
+import FilterByCheckbox from "./filtersComponents/FilterByCheckbox";
 import FilterByDetails from "./filtersComponents/FilterByDetails";
 
 class SearchPage extends Component {
@@ -64,29 +62,47 @@ class SearchPage extends Component {
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
-            <FilterBySize
-              min="10"
-              max="100"
-              step="10"
+            <FilterBySlider
+              min={1}
+              max={300}
+              step={1}
+              apartmentList={this.props.apartmentList}
+              modifyApartmentList={this.modifyApartmentList}
+              type="size"
+              title="Size Range"
+            />
+            <FilterBySlider
+              min={100}
+              max={10000}
+              step={100}
+              type="price"
+              apartmentList={this.props.apartmentList}
+              modifyApartmentList={this.modifyApartmentList}
+              title="Price Range"
+            />
+            <FilterByCheckbox
+              type="amenities"
+              checkboxes={[
+                "television",
+                "elevator",
+                "fridge",
+                "heating",
+                "cooker",
+                "microwave"
+              ]}
+              title="Amenities"
               apartmentList={this.props.apartmentList}
               modifyApartmentList={this.modifyApartmentList}
             />
-            <FilterByPrice
-              min="100"
-              max="10000"
-              step="100"
-              apartmentList={this.props.apartmentList}
-              modifyApartmentList={this.modifyApartmentList}
-            />
-            <FitlerByAmenities
-              apartmentList={this.props.apartmentList}
-              modifyApartmentList={this.modifyApartmentList}
-            />
-            <FilterByServices
+            <FilterByCheckbox
+              type="services"
+              checkboxes={["concierge", "cleaning", "fullFridge", "laundry"]}
+              title="Services"
               apartmentList={this.props.apartmentList}
               modifyApartmentList={this.modifyApartmentList}
             />
             <FilterByDetails
+              details={["rooms", "bedrooms", "floor", "bathrooms"]}
               apartmentList={this.props.apartmentList}
               modifyApartmentList={this.modifyApartmentList}
             />

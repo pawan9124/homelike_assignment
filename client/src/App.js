@@ -9,6 +9,7 @@ import ApartmentView from "./views/ApartmentView";
 import Locations from "./views/Locations";
 import { hot } from "react-hot-loader";
 import "./App.css";
+import "../node_modules/antd/dist/antd.css";
 
 class App extends Component {
   render() {

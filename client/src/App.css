@@ -64,3 +64,16 @@ input::-webkit-calendar-picker-indicator {
   overflow: auto;
   overflow-y: auto;
 }
+.pop-over-size {
+  height: 150px;
+  width: 330px;
+}
+.pop-over-size .btn-popover {
+  bottom: 2px;
+  position: absolute;
+  right: 2px;
+}
+.anticon {
+  top: -3px;
+  position: relative;
+}
