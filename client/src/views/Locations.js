@@ -5,13 +5,15 @@ import {
 } from "../actions/locationActions";
 import { connect } from "react-redux";
 import ApartmentTileView from "./ApartmentTileView";
+import SearchPage from "./SearchPage";
 
 class Locations extends Component {
-  componentWillMount() {
+  componentDidMount() {
     if (this.props.match.params.locationId != "NA") {
       this.props.fetchApartmentByLocation(this.props.match.params.locationId);
     }
   }
+
   render() {
     console.log("Locations===>", this.props.apartments);
     const apartments = this.props.apartments.items;
@@ -28,6 +30,7 @@ class Locations extends Component {
           </span>
         </div>
         <div className="container-list container-lg clearfix">
+          <SearchPage />
           <div className="col-12 float-left">
             <div className="view-apartment-list">
               {apartments.map((item, index) => (

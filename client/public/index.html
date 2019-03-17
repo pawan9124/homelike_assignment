@@ -60,4 +60,10 @@
     <script src="/vendor/js/bootstrap.min.js"></script>
     <script src="../dist/bundle.js"></script>
   </body>
+  <script type="text/javascript">
+    $(".dropdown-menu").on("click", function(e) {
+      console.log("HEEH");
+      e.stopPropagation();
+    });
+  </script>
 </html>

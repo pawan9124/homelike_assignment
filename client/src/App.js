@@ -8,6 +8,7 @@ import store from "./store";
 import ApartmentView from "./views/ApartmentView";
 import Locations from "./views/Locations";
 import { hot } from "react-hot-loader";
+import "./App.css";
 
 class App extends Component {
   render() {

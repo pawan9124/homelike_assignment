@@ -49,6 +49,13 @@ export const fetchApartmentByLocation = _id => dispatch => {
               price
               amenities
               images
+              details {
+                rooms
+                bedrooms
+                floor
+                bathrooms
+              } 
+              services 
             }
           }
         }
