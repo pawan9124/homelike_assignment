@@ -9,12 +9,15 @@ class FilterByDetails extends React.Component {
       rooms: 1,
       bedrooms: 1,
       floor: 1,
-      bathrooms: 1
+      bathrooms: 1,
+      visible: false
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.filterFunction = this.filterFunction.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.handleVisibleChange = this.handleVisibleChange.bind(this);
+    this.hidePopOver = this.hidePopOver.bind(this);
   }
 
   /**
@@ -43,6 +46,7 @@ class FilterByDetails extends React.Component {
    */
   handleSubmit() {
     const finalList = this.filterFunction();
+    this.hidePopOver();
     this.props.modifyApartmentList(finalList);
   }
 
@@ -69,6 +73,21 @@ class FilterByDetails extends React.Component {
    */
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.name });
+  }
+  /**
+   * Handling the close of modal
+   */
+  handleVisibleChange(visible) {
+    this.setState({ visible });
+  }
+
+  /**
+   * Hide PopUp
+   */
+  hidePopOver() {
+    this.setState({
+      visible: false
+    });
   }
   render() {
     const content = (
@@ -127,7 +146,7 @@ class FilterByDetails extends React.Component {
             type="button"
             className="btn btn-secondary"
             data-dismiss="modal"
-            onClick={this.hide}
+            onClick={this.hidePopOver}
           >
             Close
           </button>
@@ -149,7 +168,8 @@ class FilterByDetails extends React.Component {
             title="Filter"
             content={content}
             trigger="click"
-            id="popover-id"
+            visible={this.state.visible}
+            onVisibleChange={this.handleVisibleChange}
           >
             <a
               className="nav-link dropdown-toggle"

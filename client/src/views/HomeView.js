@@ -22,7 +22,7 @@ class HomeView extends React.Component {
 
     return (
       <div>
-        <DisplayApartments apartments={apartmentsList.items} />
+        <DisplayApartments apartments={apartmentsList.items} type="home" />
       </div>
     );
   }

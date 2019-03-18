@@ -5,11 +5,12 @@ import PropTypes from "prop-types";
 class FilterBySlider extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { value: [this.props.min, this.props.max] };
+    this.state = { value: [this.props.min, this.props.max], visible: false };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.filterFunction = this.filterFunction.bind(this);
-    this.closeModal = this.closeModal.bind(this);
+    this.handleVisibleChange = this.handleVisibleChange.bind(this);
+    this.hidePopOver = this.hidePopOver.bind(this);
   }
   /**
    * Filter the object
@@ -27,19 +28,11 @@ class FilterBySlider extends React.Component {
     return filteredList;
   }
   /**
-   * TODO: close modal
-   */
-  closeModal() {
-    const element = document.getElementsByClassName(
-      "ant-popover-placement-bottomLeft"
-    );
-    element[0].classList.add("ant-popover-hidden");
-  }
-  /**
    * Handle the apply filter function
    */
   handleSubmit() {
     const finalList = this.filterFunction();
+    this.hidePopOver();
     this.props.modifyApartmentList(finalList);
   }
 
@@ -49,6 +42,21 @@ class FilterBySlider extends React.Component {
    */
   handleChange(value) {
     this.setState({ value });
+  }
+  /**
+   * Handling the close of modal
+   */
+  handleVisibleChange(visible) {
+    this.setState({ visible });
+  }
+
+  /**
+   * Hide PopUp
+   */
+  hidePopOver() {
+    this.setState({
+      visible: false
+    });
   }
   render() {
     const { value } = this.state;
@@ -88,7 +96,7 @@ class FilterBySlider extends React.Component {
             type="button"
             className="btn btn-secondary"
             data-dismiss="modal"
-            onClick={this.closeModal}
+            onClick={this.hidePopOver}
           >
             Close
           </button>
@@ -110,6 +118,8 @@ class FilterBySlider extends React.Component {
             title="Filter"
             content={content}
             trigger="click"
+            visible={this.state.visible}
+            onVisibleChange={this.handleVisibleChange}
           >
             <a
               className="nav-link dropdown-toggle"

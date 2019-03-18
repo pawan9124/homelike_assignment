@@ -1,3 +1,4 @@
+// Refactored as it is not correct define User instead of profiles
 export default function(Profiles) {
   const usersResolvers = {
     Users: {

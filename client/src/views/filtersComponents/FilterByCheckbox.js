@@ -8,7 +8,8 @@ const servicesState = {
   concierge: false,
   cleaning: false,
   fullFridge: false,
-  laundry: false
+  laundry: false,
+  visible: false
 };
 
 //State for the Amenities
@@ -18,10 +19,12 @@ const amenitiesState = {
   fridge: false,
   heating: false,
   cooker: false,
-  microwave: false
+  microwave: false,
+  visible: false
 };
 
 class FilterByCheckbox extends React.Component {
+  //constructor to initialize the states
   constructor(props) {
     super(props);
     this.state =
@@ -29,6 +32,8 @@ class FilterByCheckbox extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.filterFunction = this.filterFunction.bind(this);
+    this.handleVisibleChange = this.handleVisibleChange.bind(this);
+    this.hidePopOver = this.hidePopOver.bind(this);
   }
 
   /**
@@ -60,9 +65,13 @@ class FilterByCheckbox extends React.Component {
     var keys = Object.keys(obj);
 
     var filtered = keys.filter(function(key) {
-      return obj[key];
+      if (key !== "visible") {
+        return obj[key];
+      }
     });
+
     const finalList = this.filterFunction(filtered);
+    this.hidePopOver();
     this.props.modifyApartmentList(finalList, finalList);
   }
   /**
@@ -72,6 +81,23 @@ class FilterByCheckbox extends React.Component {
   handleChange(e) {
     this.setState({ [e.target.name]: !this.state[e.target.name] });
   }
+
+  /**
+   * Handling the close of modal
+   */
+  handleVisibleChange(visible) {
+    this.setState({ visible });
+  }
+
+  /**
+   * Hide PopUp
+   */
+  hidePopOver() {
+    this.setState({
+      visible: false
+    });
+  }
+
   render() {
     //Content for the checkbox
     const content = (
@@ -92,7 +118,7 @@ class FilterByCheckbox extends React.Component {
           <button
             type="button"
             className="btn btn-secondary"
-            data-dismiss="modal"
+            onClick={this.hidePopOver}
           >
             Close
           </button>
@@ -114,6 +140,8 @@ class FilterByCheckbox extends React.Component {
             title="Filter"
             content={content}
             trigger="click"
+            visible={this.state.visible}
+            onVisibleChange={this.handleVisibleChange}
           >
             <a
               className="nav-link dropdown-toggle"
