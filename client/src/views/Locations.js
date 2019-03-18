@@ -1,30 +1,14 @@
 import React, { Component } from "react";
-import {
-  fetchLocationsList,
-  fetchApartmentByLocation
-} from "../actions/locationActions";
+import { fetchApartmentByLocation } from "../actions/locationActions";
 import { connect } from "react-redux";
-import ApartmentTileView from "./ApartmentTileView";
-import SearchPage from "./SearchPage";
 import NotFound from "./common/NotFound";
+import DisplayApartments from "./DisplayApartments";
+import PropTypes from "prop-types";
 
 class Locations extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      filteredApartmentList: [],
-      isFiltered: false
-    };
-    this.filterApartment = this.filterApartment.bind(this);
-  }
-
-  filterApartment(filteredApartments) {
-    this.setState({
-      filteredApartmentList: filteredApartments,
-      isFiltered: true
-    });
-  }
-
+  /**
+   * Match if location id is not present
+   */
   componentDidMount() {
     if (this.props.match.params.locationId != "NA") {
       this.props.fetchApartmentByLocation(this.props.match.params.locationId);
@@ -33,63 +17,31 @@ class Locations extends Component {
 
   render() {
     const apartments = this.props.apartments.items;
-    let { filteredApartmentList, isFiltered } = this.state;
+    const props = this.props;
 
     if (this.props.match.params.locationId === "NA") {
-      return <NotFound />;
+      return <NotFound />; //if no id found display notfound page
     }
     if (apartments === undefined) {
       return <div>Loading...</div>;
     }
 
-    let showApartmentList = apartments;
-    const sendApartmentList = apartments;
-    if (filteredApartmentList.length > 0 && isFiltered) {
-      showApartmentList = filteredApartmentList;
-    }
-    let returnApartment = (
-      <div className="row">
-        {showApartmentList.map((item, index) => (
-          <ApartmentTileView key={index} apartment={item} />
-        ))}
-      </div>
-    );
-    if (filteredApartmentList.length === 0 && isFiltered) {
-      returnApartment = <h3>Sorry, no apartments under your filter.</h3>;
-    }
     return (
       <div>
-        <div className="container-list container-lg clearfix">
-          <SearchPage
-            apartmentList={sendApartmentList}
-            filterApartment={this.filterApartment}
-          />
-          <div className="col-12 float-left">
-            <div className="apartment-header mt-4">
-              <h4>
-                <span className="apartment-count">{apartments.length}</span>
-                &nbsp;
-                <label>apartments available in </label> &nbsp;
-                <span className="location-name">
-                  {this.props.match.params.location}
-                </span>
-              </h4>
-            </div>
-            {returnApartment}
-          </div>
-        </div>
+        <DisplayApartments {...props} apartments={apartments} type="location" />
       </div>
     );
   }
 }
 const mapStateToProps = state => {
   return {
-    locations: state.locationsList,
     apartments: state.apartmentsList.apartments
   };
 };
-
+Locations.propTypes = {
+  fetchApartmentByLocation: PropTypes.func.isRequired
+};
 export default connect(
   mapStateToProps,
-  { fetchLocationsList, fetchApartmentByLocation }
+  { fetchApartmentByLocation }
 )(Locations);

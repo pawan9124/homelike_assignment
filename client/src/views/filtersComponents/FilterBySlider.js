@@ -1,5 +1,6 @@
 import React from "react";
 import { Slider, Popover } from "antd";
+import PropTypes from "prop-types";
 
 class FilterBySlider extends React.Component {
   constructor(props) {
@@ -7,11 +8,13 @@ class FilterBySlider extends React.Component {
     this.state = { value: [this.props.min, this.props.max] };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.filterBySizefunction = this.filterBySizefunction.bind(this);
+    this.filterFunction = this.filterFunction.bind(this);
     this.closeModal = this.closeModal.bind(this);
   }
-
-  filterBySizefunction() {
+  /**
+   * Filter the object
+   */
+  filterFunction() {
     const apartmentList = this.props.apartmentList;
     const range = this.state.value;
     const type = this.props.type;
@@ -21,28 +24,37 @@ class FilterBySlider extends React.Component {
       }
       return false;
     });
-    console.log("FilteredSize", filteredList);
     return filteredList;
   }
-
+  /**
+   * TODO: close modal
+   */
   closeModal() {
     const element = document.getElementsByClassName(
       "ant-popover-placement-bottomLeft"
     );
     element[0].classList.add("ant-popover-hidden");
   }
-
+  /**
+   * Handle the apply filter function
+   */
   handleSubmit() {
-    const finalList = this.filterBySizefunction();
+    const finalList = this.filterFunction();
     this.props.modifyApartmentList(finalList);
   }
+
+  /**
+   *
+   * Set the value to the state
+   */
   handleChange(value) {
-    console.log("VALUE--", value);
     this.setState({ value });
   }
   render() {
     const { value } = this.state;
     let symbol = "";
+
+    //Check condition Symbol for the component
     if (this.props.type === "size") {
       symbol = (
         <span>
@@ -53,6 +65,8 @@ class FilterBySlider extends React.Component {
     if (this.props.type === "price") {
       symbol = <span>&euro;</span>;
     }
+
+    //Slider over the popover
     const content = (
       <div className="col pop-over-size">
         <label htmlFor="customRange2">{this.props.title}</label>
@@ -112,5 +126,13 @@ class FilterBySlider extends React.Component {
     );
   }
 }
-
+FilterBySlider.propTypes = {
+  min: PropTypes.number.isRequired,
+  max: PropTypes.number.isRequired,
+  apartmentList: PropTypes.array.isRequired,
+  modifyApartmentList: PropTypes.func.isRequired,
+  type: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  step: PropTypes.number.isRequired
+};
 export default FilterBySlider;

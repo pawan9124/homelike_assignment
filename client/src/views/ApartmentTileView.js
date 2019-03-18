@@ -1,6 +1,7 @@
 import React from "react";
 import ApartmentAmentityView from "./ApartmentAmentityView";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 export default class ApartmentTileView extends React.Component {
   render() {
@@ -48,22 +49,6 @@ export default class ApartmentTileView extends React.Component {
                         <ApartmentAmentityView apartment={apartment} />
                       </div>
                     </div>
-                    <div className="_17om8IEGFeu2W2TBOJ6xQs Lsdn2hC-tehVod76x4HzK text-truncate">
-                      <label>Owner:</label>&nbsp;
-                      <span>{apartment.owner.profile.firstName}</span>&nbsp;
-                      <span>{apartment.owner.profile.lastName}</span>
-                      <div>
-                        <label>Contact:</label>&nbsp;
-                        <a
-                          href={`mailto:${
-                            apartment.owner.email
-                          }?Subject=Hello,%20request%20for%20apartment`}
-                          target="_top"
-                        >
-                          {apartment.owner.email}
-                        </a>
-                      </div>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -74,3 +59,6 @@ export default class ApartmentTileView extends React.Component {
     );
   }
 }
+ApartmentTileView.propTypes = {
+  apartment: PropTypes.object.isRequired
+};

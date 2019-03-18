@@ -1,9 +1,8 @@
 import React from "react";
 import { Button, Popover } from "antd";
+import PropTypes from "prop-types";
 
-const ButtonGroup = Button.Group;
-
-class FitlerByDetails extends React.Component {
+class FilterByDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -14,14 +13,16 @@ class FitlerByDetails extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.filterByDetails = this.filterByDetails.bind(this);
+    this.filterFunction = this.filterFunction.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
 
-  filterByDetails() {
+  /**
+   * Filter the details
+   */
+  filterFunction() {
     const apartmentList = this.props.apartmentList;
     const details = this.state;
-    console.log("DETAILS", details, apartmentList);
 
     let filteredList = apartmentList.filter(data => {
       let returnCheck = false;
@@ -35,17 +36,21 @@ class FitlerByDetails extends React.Component {
       }
       return returnCheck;
     });
-    console.log("FilteredAmenities===>", filteredList);
     return filteredList;
   }
-
+  /**
+   * Apply the filter
+   */
   handleSubmit() {
-    const finalList = this.filterByDetails();
+    const finalList = this.filterFunction();
     this.props.modifyApartmentList(finalList);
   }
+
+  /**
+   * Handle the increment decrement button
+   */
   handleClick(e, type) {
     let value = this.state[e.target.name];
-    console.log("VALUE", value);
 
     if (type === "add") {
       value++;
@@ -53,15 +58,17 @@ class FitlerByDetails extends React.Component {
     if (type === "dec") {
       value--;
     }
-    console.log("taret", [e.target.name], type, value);
     if (value > 0) {
       this.setState({ [e.target.name]: value });
     }
   }
-  handleChange(e) {
-    console.log("E", [e.target.name], e.target.value);
 
-    this.setState({ [e.target.name]: !this.state[e.target.name] });
+  /**
+   *
+   * Handle the target
+   */
+  handleChange(e) {
+    this.setState({ [e.target.name]: e.target.name });
   }
   render() {
     const content = (
@@ -158,5 +165,9 @@ class FitlerByDetails extends React.Component {
     );
   }
 }
-
-export default FitlerByDetails;
+FilterByDetails.propTypes = {
+  apartmentList: PropTypes.array.isRequired,
+  modifyApartmentList: PropTypes.func.isRequired,
+  details: PropTypes.array.isRequired
+};
+export default FilterByDetails;

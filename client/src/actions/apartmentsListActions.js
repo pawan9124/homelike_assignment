@@ -13,11 +13,6 @@ export const fetchApartmentsList = () => dispatch => {
               owner {
                 _id
                 email
-                profile {
-                  firstName
-                  lastName
-                  role
-                }
               }
               title
               location {

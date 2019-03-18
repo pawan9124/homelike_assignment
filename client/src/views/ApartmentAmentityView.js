@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 export default class ApartmentAmentityView extends React.Component {
   render() {
@@ -17,3 +18,8 @@ export default class ApartmentAmentityView extends React.Component {
     return amentities;
   }
 }
+
+PropTypes.ApartmentAmentityView = {
+  apartment: PropTypes.array.isRequired,
+  limit: PropTypes.array.isRequireds
+};

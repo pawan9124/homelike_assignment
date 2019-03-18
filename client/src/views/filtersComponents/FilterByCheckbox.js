@@ -1,7 +1,9 @@
 import React from "react";
 import { Popover } from "antd";
 import Checkbox from "../common/Checkbox";
+import PropTypes from "prop-types";
 
+//State for the Service
 const servicesState = {
   concierge: false,
   cleaning: false,
@@ -9,6 +11,7 @@ const servicesState = {
   laundry: false
 };
 
+//State for the Amenities
 const amenitiesState = {
   television: false,
   elevator: false,
@@ -25,19 +28,19 @@ class FilterByCheckbox extends React.Component {
       this.props.type === "services" ? servicesState : amenitiesState;
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.filterByDetails = this.filterByDetails.bind(this);
-    this.closeModal = this.closeModal.bind(this);
+    this.filterFunction = this.filterFunction.bind(this);
   }
 
-  closeModal() {}
-
-  filterByDetails(selectedServices) {
+  /**
+   * Handle the filter function
+   *
+   */
+  filterFunction(selectedServices) {
     const apartmentList = this.props.apartmentList;
-
     let filteredList = apartmentList.filter(data => {
       let returnCheck = false;
       for (let i = 0; i < selectedServices.length; i++) {
-        if (data.services.indexOf(selectedServices[i]) > -1) {
+        if (data[this.props.type].indexOf(selectedServices[i]) > -1) {
           returnCheck = true;
         } else {
           returnCheck = false;
@@ -46,10 +49,11 @@ class FilterByCheckbox extends React.Component {
       }
       return returnCheck;
     });
-    console.log("FilteredAmenities===>", filteredList);
     return filteredList;
   }
-
+  /**
+   * Handle the submit function
+   */
   handleSubmit() {
     var obj = this.state;
 
@@ -58,16 +62,18 @@ class FilterByCheckbox extends React.Component {
     var filtered = keys.filter(function(key) {
       return obj[key];
     });
-
-    const finalList = this.filterByDetails(filtered);
-    this.props.modifyApartmentList(finalList);
+    const finalList = this.filterFunction(filtered);
+    this.props.modifyApartmentList(finalList, finalList);
   }
-
+  /**
+   *
+   * Handle the change of input
+   */
   handleChange(e) {
-    console.log("E", [e.target.name], this.state[e.target.name]);
     this.setState({ [e.target.name]: !this.state[e.target.name] });
   }
   render() {
+    //Content for the checkbox
     const content = (
       <div className="col">
         <label htmlFor="customRange2">Select Services</label>
@@ -124,4 +130,11 @@ class FilterByCheckbox extends React.Component {
   }
 }
 
+FilterByCheckbox.propTypes = {
+  type: PropTypes.string.isRequired,
+  apartmentList: PropTypes.array.isRequired,
+  modifyApartmentList: PropTypes.func.isRequired,
+  checkboxes: PropTypes.array.isRequired,
+  title: PropTypes.string.isRequired
+};
 export default FilterByCheckbox;

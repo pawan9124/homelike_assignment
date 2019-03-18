@@ -5,52 +5,57 @@ import {
 } from "../actions/locationActions";
 import { withRouter } from "react-router";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import FilterBySlider from "./filtersComponents/FilterBySlider";
 import FilterByCheckbox from "./filtersComponents/FilterByCheckbox";
 import FilterByDetails from "./filtersComponents/FilterByDetails";
 
 class SearchPage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      locationSuggestion: [],
-      searchQuery: ""
-    };
-    this.handleOnChange = this.handleOnChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.modifyApartmentList = this.modifyApartmentList.bind(this);
-  }
+  state = {
+    locationSuggestion: [], //locations suggestions list
+    searchQuery: "" //hold the location name
+  };
+
+  /**
+   * Fetching the locations list
+   */
   componentWillMount() {
     this.props.fetchLocationsList();
   }
-
-  modifyApartmentList(filteredApartment) {
-    console.log("filteredApartment", filteredApartment);
+  /**
+   * Pass the filtred apartment to the parent through props
+   */
+  modifyApartmentList = filteredApartment => {
     this.props.filterApartment(filteredApartment);
-  }
+  };
 
-  handleSubmit(e) {
+  /**
+   * Handle the search query
+   */
+  handleSubmit = e => {
     e.preventDefault();
     let locationName = "NA";
     let locationId = "NA";
-    console.log("SearchQuer", this.state.searchQuery);
 
+    //filtering the locations
     const searchData = this.props.locations.location.filter(data => {
       if (data.title === this.state.searchQuery) return true;
     });
-    console.log("QueryTime", searchData);
     if (searchData.length > 0) {
       locationName = searchData[0].title;
       locationId = searchData[0]._id;
     }
+    //route to the location page according to name and id
     this.props.history.push("/");
     setTimeout(() => {
-      console.log("HOLA");
       this.props.history.push(`search/${locationName}/${locationId}`);
     });
-  }
+  };
 
-  handleOnChange(e) {
+  /**
+   * Handle change for the input and generate suggestion list
+   */
+  handleOnChange = e => {
     if (this.props.locations.location.length > 0) {
       let locationSuggestionHolder = this.props.locations.location.map(
         (data, index) => {
@@ -62,7 +67,7 @@ class SearchPage extends Component {
         searchQuery: e.target.value
       });
     }
-  }
+  };
 
   render() {
     return (
@@ -139,6 +144,12 @@ class SearchPage extends Component {
     );
   }
 }
+
+SearchPage.propTypes = {
+  fetchLocationsList: PropTypes.func.isRequired,
+  fetchApartmentByLocation: PropTypes.func.isRequired,
+  apartmentList: PropTypes.array.isRequired
+};
 const mapStateToProps = state => {
   return {
     locations: state.locationsList,
