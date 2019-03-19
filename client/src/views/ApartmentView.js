@@ -26,9 +26,8 @@ export class ApartmentView extends React.Component {
     if (!Object.keys(apartment).length) {
       return <div>Loading...</div>;
     }
-    let image = "http://localhost:9000/images/apartments/";
     return (
-      <Card title={apartment.title}>
+      <Card title={<div className="filterTitle">{apartment.title}</div>}>
         <div className="container-fl clearfix">
           <div className="col-12">
             <div className="view-apartment">
@@ -64,7 +63,6 @@ export class ApartmentView extends React.Component {
 }
 
 ApartmentView.propTypes = {
-  fetchApartment: PropTypes.func.isRquired,
   apartment: PropTypes.object.isRequired
 };
 

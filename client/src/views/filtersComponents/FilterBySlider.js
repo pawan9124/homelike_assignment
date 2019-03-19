@@ -65,20 +65,22 @@ class FilterBySlider extends React.Component {
     //Check condition Symbol for the component
     if (this.props.type === "size") {
       symbol = (
-        <span>
+        <span className="filterSymbol">
           m<sup>2</sup>
         </span>
       );
     }
     if (this.props.type === "price") {
-      symbol = <span>&euro;</span>;
+      symbol = <span className="filterSymbol">&euro;</span>;
     }
 
     //Slider over the popover
     const content = (
       <div className="col pop-over-size">
-        <label htmlFor="customRange2">{this.props.title}</label>
-        <div>
+        <label className="filterTitle" htmlFor="customRange2">
+          {this.props.title}
+        </label>
+        <div className="filterValue">
           <label>
             {value[0]} {symbol} - {value[1]} {symbol}
           </label>
@@ -98,11 +100,11 @@ class FilterBySlider extends React.Component {
             data-dismiss="modal"
             onClick={this.hidePopOver}
           >
-            Close
+            Cancel
           </button>
           <button
             type="button"
-            className="btn btn-primary"
+            className="btn btn-info"
             onClick={this.handleSubmit}
           >
             Apply

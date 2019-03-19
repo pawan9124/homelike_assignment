@@ -48,7 +48,7 @@ class DisplayApartments extends Component {
             {showApartmentList.length != 0 &&
             isFiltered === false &&
             this.props.type === "location" ? (
-              <h4>
+              <h5>
                 <span className="apartment-count">
                   {showApartmentList.length}
                 </span>
@@ -57,7 +57,7 @@ class DisplayApartments extends Component {
                 <span className="location-name">
                   {this.props.match.params.location}
                 </span>
-              </h4>
+              </h5>
             ) : null}
           </div>
           {returnApartment}

@@ -102,7 +102,9 @@ class FilterByCheckbox extends React.Component {
     //Content for the checkbox
     const content = (
       <div className="col">
-        <label htmlFor="customRange2">Select Services</label>
+        <label className="filterTitle" htmlFor="customRange2">
+          Select Services
+        </label>
         {this.props.checkboxes.map((data, index) => {
           return (
             <Checkbox
@@ -120,7 +122,7 @@ class FilterByCheckbox extends React.Component {
             className="btn btn-secondary"
             onClick={this.hidePopOver}
           >
-            Close
+            Cancel
           </button>
           <button
             type="button"

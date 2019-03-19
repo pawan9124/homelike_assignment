@@ -92,7 +92,9 @@ class FilterByDetails extends React.Component {
   render() {
     const content = (
       <div className="col">
-        <label htmlFor="customRange2">Details</label>
+        <label className="filterTitle" htmlFor="customRange2">
+          Details
+        </label>
         {this.props.details.map((name, index) => {
           return (
             <div
@@ -148,7 +150,7 @@ class FilterByDetails extends React.Component {
             data-dismiss="modal"
             onClick={this.hidePopOver}
           >
-            Close
+            Cancel
           </button>
           <button
             type="button"
