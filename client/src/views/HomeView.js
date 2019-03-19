@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { fetchApartmentsList } from "./../actions/apartmentsListActions";
 import PropTypes from "prop-types";
 import DisplayApartments from "./DisplayApartments";
+import { Card } from "antd";
 
 class HomeView extends React.Component {
   /**

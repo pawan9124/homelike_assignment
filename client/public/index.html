@@ -14,9 +14,16 @@
     <link rel="manifest" href="/public/manifest.json" />
     <link rel="shortcut icon" href="/public/favicon.ico" />
     <!-- Compressed CSS -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="bootstrap-grid.min.css" />
     <link rel="stylesheet" href="/vendor/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/css/main.css" />
+
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -60,10 +67,4 @@
     <script src="/vendor/js/bootstrap.min.js"></script>
     <script src="/../dist/bundle.js"></script>
   </body>
-  <script type="text/javascript">
-    $(".dropdown-menu").on("click", function(e) {
-      console.log("HEEH");
-      e.stopPropagation();
-    });
-  </script>
 </html>

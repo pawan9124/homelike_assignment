@@ -29,7 +29,7 @@ class DisplayApartments extends Component {
     let returnApartment = (
       <div className="row">
         {showApartmentList.map((item, index) => (
-          <ApartmentTileView key={index} apartment={item} />
+          <ApartmentTileView key={index} apartment={item} type="home" />
         ))}
       </div>
     );

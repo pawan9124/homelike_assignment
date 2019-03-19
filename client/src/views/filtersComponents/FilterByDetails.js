@@ -72,7 +72,7 @@ class FilterByDetails extends React.Component {
    * Handle the target
    */
   handleChange(e) {
-    this.setState({ [e.target.name]: e.target.name });
+    this.setState({ [e.target.name]: e.target.value });
   }
   /**
    * Handling the close of modal

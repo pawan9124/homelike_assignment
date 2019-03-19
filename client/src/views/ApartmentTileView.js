@@ -11,14 +11,14 @@ export default class ApartmentTileView extends React.Component {
       "http://localhost:9000/images/apartments/" + apartment.images[0];
 
     return (
-      <div className="col-sm-4 col-sm-3 mt-4">
+      <div className="col-sm-4 mt-4">
         <div className=" view-apartment-item">
           <div className="view-apartment-item-content">
             <Link to={url}>
               <div className="_3im4pDXrDfzNRT2AlvLfD6">
                 <div className="listing-image">
                   <div
-                    className="media-cover"
+                    className="media-cover grow"
                     style={{
                       backgroundImage: `url(${image})`,
                       backgroundPosition: "center",

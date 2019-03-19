@@ -2,7 +2,14 @@ import React from "react";
 import { fetchApartment } from "../actions/apartmentActions";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import ApartmentAmentityView from "./ApartmentAmentityView";
+import { Card } from "antd";
+import TabPane from "./TabPane";
+import Gallery from "./common/Gallery";
+
+const gridStyle = {
+  width: "25%",
+  textAlign: "center"
+};
 
 export class ApartmentView extends React.Component {
   componentWillMount() {
@@ -15,35 +22,26 @@ export class ApartmentView extends React.Component {
 
   render() {
     const { apartment } = this.props;
+    console.log("APARTMENT", apartment);
     if (!Object.keys(apartment).length) {
       return <div>Loading...</div>;
     }
     let image = "http://localhost:9000/images/apartments/";
     return (
-      <div className="container-fl clearfix">
-        <div className="col-12">
-          <div className="view-apartment">
-            <div className="view-apartment-item">
-              <div className="view-apartment-item-content">
+      <Card title={apartment.title}>
+        <div className="container-fl clearfix">
+          <div className="col-12">
+            <div className="view-apartment">
+              <div className="view-apartment-item">
                 <div className="_3im4pDXrDfzNRT2AlvLfD6">
-                  <div className="listing-image">
-                    <div className="row">
-                      {apartment.images.map((data, index) => {
-                        return (
-                          <div className="col-md-6" keys={"index" + index}>
-                            <img className="media-cover" src={image + data} />
-                          </div>
-                        );
-                      })}
-                    </div>
-                    <div className="_3Ts2_4uirKsrlm2Qb57Avw" />
-                    <div className="Ok22VaqPDW9x1uaR46cRO _3ORDzmMDnpzTXIIXjJsRw7 apartment-view-price">
-                      <span>{apartment.price} €</span>
-                      <span className="_17Hci6D5EewOTY42eIXhPy">
-                        <span className="_2GcdOjvYR400SpIsNOxzGK">/</span>
-                        <span>Monat</span>
-                      </span>
-                    </div>
+                  <Gallery images={apartment.images} />
+                  <div className="_3Ts2_4uirKsrlm2Qb57Avw" />
+                  <div className="Ok22VaqPDW9x1uaR46cRO _3ORDzmMDnpzTXIIXjJsRw7 apartment-view-price">
+                    <span>{apartment.price} €</span>
+                    <span className="_17Hci6D5EewOTY42eIXhPy">
+                      <span className="_2GcdOjvYR400SpIsNOxzGK">/</span>
+                      <span> Monat</span>
+                    </span>
                   </div>
                   <div className="listing-details-container title-display">
                     <div className="listing-details">
@@ -52,48 +50,22 @@ export class ApartmentView extends React.Component {
                           {apartment.title}
                         </span>
                       </div>
-                      <div className="_17om8IEGFeu2W2TBOJ6xQs Lsdn2hC-tehVod76x4HzK text-truncate">
-                        <span>{apartment.size} m²</span>
-                      </div>
-                      <div className="f9YmKwMaSOdtYnk_Qz-iT">
-                        <div className="dVjtBg_ihJ63cZB8GwE0g text-truncate">
-                          <ApartmentAmentityView
-                            apartment={apartment}
-                            limit="20"
-                          />
-                        </div>
-                      </div>
-                      <div className="_17om8IEGFeu2W2TBOJ6xQs Lsdn2hC-tehVod76x4HzK text-truncate">
-                        <label>Owner:</label>&nbsp;
-                        <span>{apartment.owner.profile.firstName}</span>&nbsp;
-                        <span>{apartment.owner.profile.lastName}</span>
-                        <div>
-                          <label>Contact:</label>&nbsp;
-                          <a
-                            href={`mailto:${
-                              apartment.owner.email
-                            }?Subject=Hello,%20request%20for%20apartment`}
-                            target="_top"
-                          >
-                            {apartment.owner.email}
-                          </a>
-                        </div>
-                      </div>
                     </div>
                   </div>
+                  <TabPane apartment={apartment} />
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </Card>
     );
   }
 }
 
 ApartmentView.propTypes = {
   fetchApartment: PropTypes.func.isRquired,
-  apartment: PropTypes.array.isRequired
+  apartment: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
