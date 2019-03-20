@@ -63,7 +63,7 @@ class FilterByDetails extends React.Component {
     if (type === "dec") {
       value--;
     }
-    if (value > 0) {
+    if (value > 0 && value < 9) {
       this.setState({ [e.target.name]: value });
     }
   }
@@ -116,7 +116,7 @@ class FilterByDetails extends React.Component {
             <div
               className="col-sm-4 pull-right"
               style={{ display: "flex", marginBottom: 15 }}
-              keys={"index" + index}
+              key={"index" + index}
             >
               <div className="row">
                 <div className="col-sm-4">

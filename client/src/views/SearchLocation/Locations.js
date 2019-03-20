@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { fetchApartmentByLocation } from "../actions/locationActions";
+import { fetchApartmentByLocation } from "./../../actions/locationActions";
 import { connect } from "react-redux";
-import NotFound from "./common/NotFound";
-import DisplayApartments from "./DisplayApartments";
+import NotFound from "./../utils/NotFound";
+import DisplayApartments from "./../Common/DisplayApartments";
 import PropTypes from "prop-types";
 
 class Locations extends Component {

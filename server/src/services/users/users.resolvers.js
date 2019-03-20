@@ -4,7 +4,7 @@ export default function(Profiles) {
     Users: {
       profile: user => {
         return Profiles.find({ query: { _id: user.owner } }).then(result => {
-          return result[0];
+          result[0];
         });
       }
     }

@@ -25,7 +25,10 @@ class Gallery extends Component {
         <div className="row-gallery">
           {images.map((src, index) => {
             return (
-              <div className="column-gallery" keys={"indexGallery" + index}>
+              <div
+                className="column-gallery"
+                key={"indexGallery" + src + index}
+              >
                 <img
                   src={image + src}
                   alt={src}

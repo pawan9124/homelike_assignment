@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { IconMapping } from "./common/IconMapping";
+import { IconMapping } from "./../utils/IconMapping";
 import { Card } from "antd";
 
 const gridStyle = {
@@ -16,8 +16,8 @@ export default class ApartmentAmentityView extends React.Component {
       apartment.amenities.map((item, index) => {
         if (index < limit) {
           amentities.push(
-            <Card.Grid style={gridStyle}>
-              <i class={IconMapping[item]} />
+            <Card.Grid style={gridStyle} key={"display:" + index}>
+              <i className={IconMapping[item]} />
               <span>{item}</span>
             </Card.Grid>
           );
@@ -27,7 +27,7 @@ export default class ApartmentAmentityView extends React.Component {
       apartment.amenities.map((item, index) => {
         if (index < limit) {
           amentities.push(
-            <span className="_1h9l4w0vvX6d56ZnJ3NLod">
+            <span className="_1h9l4w0vvX6d56ZnJ3NLod" key={"others:" + index}>
               <i className={IconMapping[item]} />
               <span>{item}</span>
             </span>

@@ -7,10 +7,10 @@ import store from "./store";
 import { hot } from "react-hot-loader";
 import "./App.css";
 import "../node_modules/antd/dist/antd.css";
-const HomeView = lazy(() => import("./views/HomeView"));
-const ApartmentView = lazy(() => import("./views/ApartmentView"));
-const Locations = lazy(() => import("./views/Locations"));
-const NotFound = lazy(() => import("./views/common/404"));
+const HomeView = lazy(() => import("./views/HomePage/HomeView"));
+const ApartmentView = lazy(() => import("./views/ViewApartment/ApartmentView"));
+const Locations = lazy(() => import("./views/SearchLocation/Locations"));
+const NotFound = lazy(() => import("./views/utils/404"));
 
 class App extends Component {
   render() {
@@ -21,18 +21,22 @@ class App extends Component {
             <Suspense fallback={<div>Loading...</div>}>
               <div>
                 <Switch>
-                  <Route exact path="/" component={HomeView} />
+                  <Route
+                    exact
+                    path="/"
+                    render={props => <HomeView {...props} />}
+                  />
                   <Route
                     exact
                     path="/apartments/:apartmentId"
-                    component={ApartmentView}
+                    render={props => <ApartmentView {...props} />}
                   />
                   <Route
                     exact
                     path="/search/:location/:locationId"
-                    component={Locations}
+                    render={props => <Locations {...props} />}
                   />
-                  <Route component={NotFound} />
+                  <Route render={props => <NotFound {...props} />} />
                 </Switch>
               </div>
             </Suspense>

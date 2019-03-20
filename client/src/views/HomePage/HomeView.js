@@ -1,9 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchApartmentsList } from "./../actions/apartmentsListActions";
+import { fetchApartmentsList } from "./../../actions/apartmentsListActions";
 import PropTypes from "prop-types";
-import DisplayApartments from "./DisplayApartments";
-import Loader from "./common/Loader";
+import DisplayApartments from "./../Common/DisplayApartments";
+import Loader from "./../utils/Loader";
 
 class HomeView extends React.Component {
   /**

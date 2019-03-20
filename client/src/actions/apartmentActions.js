@@ -19,9 +19,6 @@ export const fetchApartment = _id => dispatch => {
                 }
         } 
         title
-        location {
-          title
-        }
         size
         price
         images
@@ -32,7 +29,11 @@ export const fetchApartment = _id => dispatch => {
           floor
           bathrooms
         } 
-        services 
+        services
+        location {
+          _id
+          title
+        } 
       }
     }`
     })

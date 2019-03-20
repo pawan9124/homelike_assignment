@@ -1,10 +1,10 @@
 import React from "react";
-import { fetchApartment } from "../actions/apartmentActions";
+import { fetchApartment } from "./../../actions/apartmentActions";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Card } from "antd";
-import TabPane from "./TabPane";
-import Gallery from "./common/Gallery";
+import TabPaneComponent from "./../Common/TabPane";
+import Gallery from "./../utils/Gallery";
 
 const gridStyle = {
   width: "25%",
@@ -51,7 +51,7 @@ export class ApartmentView extends React.Component {
                       </div>
                     </div>
                   </div>
-                  <TabPane apartment={apartment} />
+                  <TabPaneComponent apartment={apartment} />
                 </div>
               </div>
             </div>

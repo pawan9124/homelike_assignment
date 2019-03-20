@@ -17,6 +17,7 @@ export const fetchLocationsList = () => dispatch => {
       `
     })
     .then(locations => {
+      console.log("LOCATIONS", locations);
       dispatch({
         type: FETCH_LOCATIONS_LIST,
         payload: locations.data

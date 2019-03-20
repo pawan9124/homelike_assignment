@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Tabs, Card } from "antd";
-import ApartmentAmentityView from "./ApartmentAmentityView";
-import { IconMapping } from "./common/IconMapping";
+import ApartmentAmentityView from "./../ViewApartment/ApartmentAmentityView";
+import { IconMapping } from "./../utils/IconMapping";
 import PropTypes from "prop-types";
 const gridStyle = {
   width: "25%",
@@ -14,12 +14,12 @@ class TabPane extends Component {
     const { apartment } = this.props;
     const details = Object.keys(apartment.details);
     return (
-      <Card>
+      <Card key={"HOLd" + new Date().getSeconds()}>
         <Tabs defaultActiveKey="1">
           <TabPane
             tab={
               <span>
-                <i class="fas fa-tv tab-icon" />
+                <i className="fas fa-tv tab-icon" />
                 Amenities
               </span>
             }
@@ -36,22 +36,22 @@ class TabPane extends Component {
           <TabPane
             tab={
               <span>
-                <i class="fas fa-ruler-combined tab-icon" />
+                <i className="fas fa-ruler-combined tab-icon" />
                 Size
               </span>
             }
             key="2"
           >
-            <span>
-              <i class="fas fa-ruler-combined tab-icon" />
+            <Card.Grid style={gridStyle}>
+              <i className="fas fa-ruler-combined tab-icon" />
               {apartment.size} m²
-            </span>
+            </Card.Grid>
           </TabPane>
 
           <TabPane
             tab={
               <span>
-                <i class="fas fa-concierge-bell tab-icon" />
+                <i className="fas fa-concierge-bell tab-icon" />
                 Services
               </span>
             }
@@ -60,10 +60,12 @@ class TabPane extends Component {
             <ul>
               {apartment.services.map((data, index) => {
                 return (
-                  <Card.Grid keys={"index3" + index} style={gridStyle}>
-                    <i className={IconMapping[data]} />
-                    {data}
-                  </Card.Grid>
+                  <div key={"index1" + index + new Date().getSeconds()}>
+                    <Card.Grid style={gridStyle}>
+                      <i className={IconMapping[data]} />
+                      {data}
+                    </Card.Grid>
+                  </div>
                 );
               })}
             </ul>
@@ -71,7 +73,7 @@ class TabPane extends Component {
           <TabPane
             tab={
               <span>
-                <i class="fas fa-info-circle tab-icon" />
+                <i className="fas fa-info-circle tab-icon" />
                 Details
               </span>
             }
@@ -80,10 +82,12 @@ class TabPane extends Component {
             {details.map((data, index) => {
               if (data !== "__typename") {
                 return (
-                  <Card.Grid keys={"index4" + index} style={gridStyle}>
-                    <i className={IconMapping[data]} />
-                    {data} {apartment.details[data]}
-                  </Card.Grid>
+                  <div key={"index2" + index + new Date().getSeconds()}>
+                    <Card.Grid style={gridStyle}>
+                      <i className={IconMapping[data]} />
+                      {data} {apartment.details[data]}
+                    </Card.Grid>
+                  </div>
                 );
               }
             })}
@@ -91,7 +95,7 @@ class TabPane extends Component {
           <TabPane
             tab={
               <span>
-                <i class="fas fa-user tab-icon" />
+                <i className="fas fa-user tab-icon" />
                 Owner
               </span>
             }
@@ -99,7 +103,7 @@ class TabPane extends Component {
           >
             <div className="_17om8IEGFeu2W2TBOJ6xQs Lsdn2hC-tehVod76x4HzK text-truncate">
               <label>
-                <i class="fas fa-user tab-icon" />
+                <i className="fas fa-user tab-icon" />
                 Owner:
               </label>
               &nbsp;
@@ -109,7 +113,7 @@ class TabPane extends Component {
               <div>
                 <label>
                   {" "}
-                  <i class="fas fa-at tab-icon" />
+                  <i className="fas fa-at tab-icon" />
                   Contact:
                 </label>
                 &nbsp;

@@ -1,6 +1,6 @@
 import React from "react";
 import { Popover } from "antd";
-import Checkbox from "../common/Checkbox";
+import Checkbox from "./../utils/Checkbox";
 import PropTypes from "prop-types";
 
 //State for the Service

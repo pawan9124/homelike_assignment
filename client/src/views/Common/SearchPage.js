@@ -1,14 +1,11 @@
 import React, { Component } from "react";
-import {
-  fetchLocationsList,
-  fetchApartmentByLocation
-} from "../actions/locationActions";
+import { fetchLocationsList } from "./../../actions/locationActions";
 import { withRouter } from "react-router";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import FilterBySlider from "./filtersComponents/FilterBySlider";
-import FilterByCheckbox from "./filtersComponents/FilterByCheckbox";
-import FilterByDetails from "./filtersComponents/FilterByDetails";
+import FilterBySlider from "./../filtersComponents/FilterBySlider";
+import FilterByCheckbox from "./../filtersComponents/FilterByCheckbox";
+import FilterByDetails from "./../filtersComponents/FilterByDetails";
 
 class SearchPage extends Component {
   state = {
@@ -147,7 +144,6 @@ class SearchPage extends Component {
 
 SearchPage.propTypes = {
   fetchLocationsList: PropTypes.func.isRequired,
-  fetchApartmentByLocation: PropTypes.func.isRequired,
   apartmentList: PropTypes.array.isRequired
 };
 const mapStateToProps = state => {
@@ -159,5 +155,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { fetchLocationsList, fetchApartmentByLocation }
+  { fetchLocationsList }
 )(withRouter(SearchPage));

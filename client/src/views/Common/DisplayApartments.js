@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import SearchPage from "./SearchPage";
-import ApartmentTileView from "./ApartmentTileView";
+import ApartmentTileView from "./../ViewApartment/ApartmentTileView";
 
 class DisplayApartments extends Component {
   state = {
