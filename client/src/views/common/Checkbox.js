@@ -5,7 +5,7 @@ const Checkbox = props => {
     <div className="custom-control custom-checkbox">
       <input
         type="checkbox"
-        className="custom-control-input"
+        className="custom-control-input check-checkbox"
         onClick={e => props.handleChange(e)}
         defaultChecked={props.checked}
         id={props.checkboxId}

@@ -34,6 +34,7 @@ class FilterByCheckbox extends React.Component {
     this.filterFunction = this.filterFunction.bind(this);
     this.handleVisibleChange = this.handleVisibleChange.bind(this);
     this.hidePopOver = this.hidePopOver.bind(this);
+    this.resetFilter = this.resetFilter.bind(this);
   }
 
   /**
@@ -98,6 +99,20 @@ class FilterByCheckbox extends React.Component {
     });
   }
 
+  /**
+   * Reset Filter
+   */
+  resetFilter() {
+    var x = document.getElementsByClassName("check-checkbox");
+    for (let i = 0; i <= x.length; i++) {
+      if (x[i] != undefined) {
+        x[i].checked = false;
+      }
+    }
+    this.hidePopOver();
+    this.props.modifyApartmentList(this.props.apartmentList);
+  }
+
   render() {
     //Content for the checkbox
     const content = (
@@ -117,6 +132,13 @@ class FilterByCheckbox extends React.Component {
           );
         })}
         <div className="btn-popover">
+          <a
+            href="#"
+            className="resetFilter-checkbox"
+            onClick={this.resetFilter}
+          >
+            resetFilter
+          </a>
           <button
             type="button"
             className="btn btn-secondary"

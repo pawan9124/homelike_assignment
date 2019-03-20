@@ -11,6 +11,7 @@ class FilterBySlider extends React.Component {
     this.filterFunction = this.filterFunction.bind(this);
     this.handleVisibleChange = this.handleVisibleChange.bind(this);
     this.hidePopOver = this.hidePopOver.bind(this);
+    this.resetFilter = this.resetFilter.bind(this);
   }
   /**
    * Filter the object
@@ -58,6 +59,19 @@ class FilterBySlider extends React.Component {
       visible: false
     });
   }
+
+  /**
+   * Reset Filter function
+   */
+  resetFilter() {
+    const value = {
+      value: [this.props.min, this.props.max],
+      visible: false
+    };
+    this.setState(value);
+    this.props.modifyApartmentList(this.props.apartmentList);
+  }
+
   render() {
     const { value } = this.state;
     let symbol = "";
@@ -87,13 +101,17 @@ class FilterBySlider extends React.Component {
         </div>
         <Slider
           range
-          defaultValue={[this.props.min, this.props.max]}
+          defaultValue={value}
           onChange={value => this.handleChange(value)}
           max={this.props.max}
           min={this.props.min}
           step={this.props.step}
+          value={value}
         />
         <div className="btn-popover">
+          <a href="###" className="resetFilter" onClick={this.resetFilter}>
+            resetFilter
+          </a>
           <button
             type="button"
             className="btn btn-secondary"

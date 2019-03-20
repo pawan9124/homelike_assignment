@@ -18,6 +18,7 @@ class FilterByDetails extends React.Component {
     this.handleClick = this.handleClick.bind(this);
     this.handleVisibleChange = this.handleVisibleChange.bind(this);
     this.hidePopOver = this.hidePopOver.bind(this);
+    this.resetFilter = this.resetFilter.bind(this);
   }
 
   /**
@@ -89,6 +90,21 @@ class FilterByDetails extends React.Component {
       visible: false
     });
   }
+
+  /**
+   * Reset Filter
+   */
+  resetFilter() {
+    const resetData = {
+      rooms: 1,
+      bedrooms: 1,
+      floor: 1,
+      bathrooms: 1,
+      visible: false
+    };
+    this.setState(resetData);
+    this.props.modifyApartmentList(this.props.apartmentList);
+  }
   render() {
     const content = (
       <div className="col">
@@ -144,6 +160,9 @@ class FilterByDetails extends React.Component {
           );
         })}
         <div className="btn-popover" style={{ marginLeft: 135 }}>
+          <a href="###" className="resetFilter" onClick={this.resetFilter}>
+            resetFilter
+          </a>
           <button
             type="button"
             className="btn btn-secondary"

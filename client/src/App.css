@@ -258,3 +258,13 @@ ul li {
 .filterSymbol {
   color: cadetblue;
 }
+
+/********** RESET FILTER **********/
+.resetFilter {
+  position: relative;
+  left: -50%;
+}
+.resetFilter-checkbox {
+  position: relative;
+  left: -10%;
+}
