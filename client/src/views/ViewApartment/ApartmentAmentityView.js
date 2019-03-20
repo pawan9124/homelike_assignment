@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { IconMapping } from "./../utils/IconMapping";
-import { Card } from "antd";
+import Card from "antd/lib/card";
 
 const gridStyle = {
   width: "25%",

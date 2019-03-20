@@ -2,7 +2,7 @@ import React from "react";
 import { fetchApartment } from "./../../actions/apartmentActions";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { Card } from "antd";
+import Card from "antd/lib/card";
 import TabPaneComponent from "./../Common/TabPane";
 import Gallery from "./../utils/Gallery";
 

@@ -1,5 +1,6 @@
 import React from "react";
-import { Slider, Popover } from "antd";
+import Slider from "antd/lib/slider";
+import Popover from "antd/lib/popover";
 import PropTypes from "prop-types";
 
 class FilterBySlider extends React.Component {

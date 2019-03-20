@@ -1,5 +1,5 @@
 import React from "react";
-import { Popover } from "antd";
+import Popover from "antd/lib/popover";
 import Checkbox from "./../utils/Checkbox";
 import PropTypes from "prop-types";
 

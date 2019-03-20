@@ -1,5 +1,6 @@
 import React from "react";
-import { Button, Popover } from "antd";
+import Button from "antd/lib/button";
+import Popover from "antd/lib/popover";
 import PropTypes from "prop-types";
 
 class FilterByDetails extends React.Component {
