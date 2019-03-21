@@ -14,3 +14,8 @@ Start the Server Side
 1. Run sudo (linux/mac) mongod or mongod 
 2. cd homelike_assignment/server
 3. npm start
+
+Port visit
+==============
+client:- http://localhost:7000 (visit this link in browser)
+Server:- http://localhost:9000
