@@ -49,7 +49,7 @@ class FilterByDetails extends React.Component {
   handleSubmit() {
     const finalList = this.filterFunction();
     this.hidePopOver();
-    this.props.modifyApartmentList(finalList);
+    this.props.modifyApartmentList(finalList, "details", true, "details");
   }
 
   /**
@@ -104,7 +104,7 @@ class FilterByDetails extends React.Component {
       visible: false
     };
     this.setState(resetData);
-    this.props.modifyApartmentList(this.props.apartmentList);
+    this.props.modifyApartmentList([], "details", false, "");
   }
   render() {
     const content = (

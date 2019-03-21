@@ -36,7 +36,6 @@ export const fetchApartment = _id => dispatch => {
       options: () => ({ fetchPolicy: "network-only" })
     })
     .then(apartment => {
-      console.log("APARTMENT++++", apartment);
       dispatch({
         type: FETCH_APARTMENT,
         payload: apartment.data

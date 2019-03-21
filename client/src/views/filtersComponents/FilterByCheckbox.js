@@ -73,7 +73,12 @@ class FilterByCheckbox extends React.Component {
 
     const finalList = this.filterFunction(filtered);
     this.hidePopOver();
-    this.props.modifyApartmentList(finalList, finalList);
+    this.props.modifyApartmentList(
+      finalList,
+      this.props.type,
+      true,
+      this.props.type
+    );
   }
   /**
    *
@@ -110,7 +115,7 @@ class FilterByCheckbox extends React.Component {
       }
     }
     this.hidePopOver();
-    this.props.modifyApartmentList(this.props.apartmentList);
+    this.props.modifyApartmentList([], this.props.type, false, "");
   }
 
   render() {

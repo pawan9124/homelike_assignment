@@ -17,7 +17,6 @@ export const fetchLocationsList = () => dispatch => {
       `
     })
     .then(locations => {
-      console.log("LOCATIONS", locations);
       dispatch({
         type: FETCH_LOCATIONS_LIST,
         payload: locations.data
@@ -63,7 +62,6 @@ export const fetchApartmentByLocation = _id => dispatch => {
       `
     })
     .then(apartments => {
-      console.log("Apartments", apartments);
       dispatch({
         type: FETCH_APARTMENTS_LIST,
         payload: apartments.data

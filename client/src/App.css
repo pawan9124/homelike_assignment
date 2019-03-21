@@ -290,3 +290,19 @@ ul li {
 .apartment-count {
   color: forestgreen;
 }
+
+/******* Apartment display header ********/
+#apartment-header .location-name {
+  color: cornflowerblue;
+}
+#apartment-header .show-location-name {
+  right: 0px;
+  top: 10px;
+  position: absolute;
+}
+#apartment-header .pull-right {
+  float: right !important;
+}
+#apartment-header .filter-type {
+  color: cornflowerblue;
+}

@@ -35,7 +35,12 @@ class FilterBySlider extends React.Component {
   handleSubmit() {
     const finalList = this.filterFunction();
     this.hidePopOver();
-    this.props.modifyApartmentList(finalList);
+    this.props.modifyApartmentList(
+      finalList,
+      this.props.type,
+      true,
+      this.props.type
+    );
   }
 
   /**
@@ -70,7 +75,7 @@ class FilterBySlider extends React.Component {
       visible: false
     };
     this.setState(value);
-    this.props.modifyApartmentList(this.props.apartmentList);
+    this.props.modifyApartmentList([], this.props.type, false, "");
   }
 
   render() {

@@ -22,8 +22,13 @@ class SearchPage extends Component {
   /**
    * Pass the filtred apartment to the parent through props
    */
-  modifyApartmentList = filteredApartment => {
-    this.props.filterApartment(filteredApartment);
+  modifyApartmentList = (filteredApartment, type, isActive, setCurrentType) => {
+    this.props.filterApartment(
+      filteredApartment,
+      type,
+      isActive,
+      setCurrentType
+    );
   };
 
   /**
