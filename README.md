@@ -6,14 +6,16 @@ Start the project locally
 Start the Client side
 ========================
 1. cd homelike_assignment/client
-2. npm start
+2. npm install
+3. npm start
 
 Start the Server Side
 ========================
 
 1. Run sudo (linux/mac) mongod or mongod 
 2. cd homelike_assignment/server
-3. npm start
+3. npm install
+4. npm start
 
 Port visit
 ==============
