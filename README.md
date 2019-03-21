@@ -17,5 +17,5 @@ Start the Server Side
 
 Port visit
 ==============
-client:- http://localhost:7000 (visit this link in browser)
-Server:- http://localhost:9000
+- client:- http://localhost:7000 (visit this link in browser)
+- Server:- http://localhost:9000
