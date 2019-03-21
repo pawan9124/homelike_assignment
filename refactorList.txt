@@ -3,11 +3,11 @@
                         REFACTORING OF CODE
 //======================================================================//
 
-1. Changed ComponentWillMount to ComponentDidMount 
+1. Added Prop-types to components
 
-Reason:- ComponentWillMount will be depricated for React in major release and  fetching api's should be done in ComponentDidMount as it rendered after mounting of component so to setState.
+Reason:- PropTypes make component safe to use, it will throw error if its requirements is not supplied.
 
----------------------------------------------------------------------
+----------------------------------------------------------------------
 
 2. Structured and grouped components to make them reusable
 
@@ -56,8 +56,8 @@ Reason:- Removed previous view and added new view with image gallery and tabs to
 
 ----------------------------------------------------------------------
 
-11. Added Prop-types to components
+11. Changed ComponentWillMount to ComponentDidMount 
 
-Reason:- PropTypes make component safe to use, it will throw error if its requirements is not supplied.
+Reason:- ComponentWillMount will be depricated for React in major release and  fetching api's should be done in ComponentDidMount as it rendered after mounting of component so to setState.
 
-----------------------------------------------------------------------
+---------------------------------------------------------------------
