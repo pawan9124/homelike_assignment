@@ -4,7 +4,11 @@ import { connect } from "react-redux";
 import NotFound from "./../utils/NotFound";
 import DisplayApartments from "./../Common/DisplayApartments";
 import PropTypes from "prop-types";
-
+import Loader from "./../utils/Loader";
+/**
+ * Locations Provide list of apartments according to location search
+ * @child of App.js as route
+ */
 class Locations extends Component {
   /**
    * Match if location id is not present
@@ -23,7 +27,7 @@ class Locations extends Component {
       return <NotFound />; //if no id found display notfound page
     }
     if (apartments === undefined) {
-      return <div>Loading...</div>;
+      return <Loader />;
     }
 
     return (

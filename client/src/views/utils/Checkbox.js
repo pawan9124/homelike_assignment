@@ -1,5 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
+
+/**
+ * Checkbox component
+ * @child of FiltersByCheckbox
+ */
 const Checkbox = props => {
   return (
     <div className="custom-control custom-checkbox">

@@ -1,6 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const json = require("json-loader!./file.json");
 
 module.exports = {
   entry: [
@@ -28,6 +29,11 @@ module.exports = {
         test: /\.(png|svg|jpg|jpeg|gif|ico)$/,
         exclude: /node_modules/,
         use: ["file-loader?name=[name].[ext]"] // ?name=[name].[ext] is only necessary to preserve the original file name
+      },
+      {
+        //Json loader
+        test: /\.json$/,
+        loader: "json-loader"
       }
     ]
   },
@@ -39,6 +45,11 @@ module.exports = {
     path: path.resolve(__dirname, "dist/"),
     publicPath: "/dist/",
     filename: "bundle.js"
+  },
+  optimization: {
+    splitChunks: {
+      chunks: "all"
+    }
   },
   devServer: {
     contentBase: path.join(__dirname, "public"),

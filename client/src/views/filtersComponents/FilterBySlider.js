@@ -3,6 +3,11 @@ import Slider from "antd/lib/slider";
 import Popover from "antd/lib/popover";
 import PropTypes from "prop-types";
 
+/**
+ * FiltebySlider provide slider for size and price
+ * @child of SearchPage
+ */
+
 class FilterBySlider extends React.Component {
   constructor(props) {
     super(props);

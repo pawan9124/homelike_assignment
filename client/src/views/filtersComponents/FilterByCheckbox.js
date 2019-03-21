@@ -23,6 +23,10 @@ const amenitiesState = {
   visible: false
 };
 
+/**
+ * Filtebycheckbox use checkbox filter for Amenities and detials fitlers
+ * @child of SearchPage
+ */
 class FilterByCheckbox extends React.Component {
   //constructor to initialize the states
   constructor(props) {

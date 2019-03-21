@@ -3,6 +3,10 @@ import Button from "antd/lib/button";
 import Popover from "antd/lib/popover";
 import PropTypes from "prop-types";
 
+/**
+ * FiltebyDetails show details filter increment/decrement
+ * @child of SearchPage
+ */
 class FilterByDetails extends React.Component {
   constructor(props) {
     super(props);

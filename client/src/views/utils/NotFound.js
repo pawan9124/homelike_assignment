@@ -1,5 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+/**
+ * Display message of no apartment in filter
+ */
 export default () => {
   return (
     <div className="loc-not-found">

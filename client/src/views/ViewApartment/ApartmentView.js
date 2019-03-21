@@ -5,11 +5,12 @@ import PropTypes from "prop-types";
 import Card from "antd/lib/card";
 import TabPaneComponent from "./../Common/TabPane";
 import Gallery from "./../utils/Gallery";
+import Loader from "./../utils/Loader";
 
-const gridStyle = {
-  width: "25%",
-  textAlign: "center"
-};
+/**
+ * Display Apartment View
+ * @child of App.js on routes
+ */
 
 export class ApartmentView extends React.Component {
   componentWillMount() {
@@ -23,7 +24,7 @@ export class ApartmentView extends React.Component {
   render() {
     const { apartment } = this.props;
     if (!Object.keys(apartment).length) {
-      return <div>Loading...</div>;
+      return <Loader />;
     }
     return (
       <Card title={<div className="filterTitle">{apartment.title}</div>}>

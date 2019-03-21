@@ -1,5 +1,7 @@
 import React from "react";
-
+/**
+ * Loader component
+ */
 export default () => {
   return (
     <div id="loading">

@@ -1,3 +1,6 @@
+/**
+ * Mapping of icons and keys
+ */
 export const IconMapping = {
   rooms: "fas fa-restroom tab-icon",
   bedrooms: "fas fa-bed tab-icon",

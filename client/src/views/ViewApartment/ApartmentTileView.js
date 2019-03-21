@@ -3,6 +3,11 @@ import ApartmentAmentityView from "./ApartmentAmentityView";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
+/**
+ * Display Tile View of apartment
+ * @child of DisplayApartment
+ */
+
 export default class ApartmentTileView extends React.Component {
   render() {
     let { apartment } = this.props;

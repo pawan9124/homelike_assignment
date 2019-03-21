@@ -4,7 +4,10 @@ import { fetchApartmentsList } from "./../../actions/apartmentsListActions";
 import PropTypes from "prop-types";
 import DisplayApartments from "./../Common/DisplayApartments";
 import Loader from "./../utils/Loader";
-
+/**
+ * Landing page of apartments and filters
+ * @child of App.js
+ */
 class HomeView extends React.Component {
   /**
    * Refactored to component did mount

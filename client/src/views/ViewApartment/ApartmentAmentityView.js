@@ -7,6 +7,10 @@ const gridStyle = {
   width: "25%",
   textAlign: "center"
 };
+/**
+ * Display Amenities to homepage and apartment view
+ * @child of Homepage and Apartment View
+ */
 
 export default class ApartmentAmentityView extends React.Component {
   render() {

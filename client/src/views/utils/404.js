@@ -1,6 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+/**
+ * 404 message if url not found
+ * @child of App.js as route
+ */
 export default () => {
   return (
     <div className="loc-not-found">

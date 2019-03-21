@@ -3,6 +3,11 @@ import PropTypes from "prop-types";
 import SearchPage from "./SearchPage";
 import ApartmentTileView from "./../ViewApartment/ApartmentTileView";
 
+/**
+ * Display apartment component
+ * @child of HomePage and SearchLocation
+ */
+
 class DisplayApartments extends Component {
   state = {
     size: { list: [], isActive: false },

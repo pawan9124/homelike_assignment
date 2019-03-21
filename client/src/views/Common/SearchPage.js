@@ -7,6 +7,10 @@ import FilterBySlider from "./../filtersComponents/FilterBySlider";
 import FilterByCheckbox from "./../filtersComponents/FilterByCheckbox";
 import FilterByDetails from "./../filtersComponents/FilterByDetails";
 
+/**
+ * Search page component show search bar and filter in home and location
+ * @child of DisplayApartment
+ */
 class SearchPage extends Component {
   state = {
     locationSuggestion: [], //locations suggestions list

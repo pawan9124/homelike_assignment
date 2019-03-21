@@ -8,7 +8,10 @@ const gridStyle = {
   width: "25%",
   textAlign: "center"
 };
-
+/**
+ * Tab pane used  to display tabs of apartment details
+ * @child of ApartmentView
+ */
 class TabPane extends Component {
   render() {
     const TabPane = Tabs.TabPane;

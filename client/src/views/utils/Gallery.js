@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
+/**
+ *Display image
+ * @child of ApartmentView
+ */
 class Gallery extends Component {
   componentDidMount() {
     let imageData = document.getElementsByClassName("galleryImage");
