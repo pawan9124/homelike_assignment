@@ -2,7 +2,7 @@ import React from "react";
 
 export default () => {
   return (
-    <div>
+    <div className="loc-not-found">
       <center>
         <h1 className="display-4">Location Not Found</h1>
         <h6>Sorry, We don't have apartments in this location.</h6>

@@ -159,6 +159,14 @@ input::-webkit-calendar-picker-indicator {
 
 .tab-icon {
   margin-right: 5px;
+  margin-right: 9px;
+  font-size: 14px;
+  color: #5cb85c;
+}
+.icon-text {
+  font-family: lato;
+  font-size: 16px;
+  font-weight: 300;
 }
 ul li {
   text-decoration: none;
@@ -267,4 +275,18 @@ ul li {
 .resetFilter-checkbox {
   position: relative;
   left: -10%;
+}
+/******** Not found and 404 ******/
+.loc-not-found {
+  margin: 100px;
+  background-image: url("./location.svg") no-repeat;
+  background-size: cover;
+}
+
+/******** Location header ******/
+.apartment-header {
+  font-family: lato;
+}
+.apartment-count {
+  color: forestgreen;
 }

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Tabs, Card } from "antd";
+import Card from "antd/lib/card";
+import Tabs from "antd/lib/tabs";
 import ApartmentAmentityView from "./../ViewApartment/ApartmentAmentityView";
 import { IconMapping } from "./../utils/IconMapping";
 import PropTypes from "prop-types";
@@ -18,14 +19,14 @@ class TabPane extends Component {
         <Tabs defaultActiveKey="1">
           <TabPane
             tab={
-              <span>
-                <i className="fas fa-tv tab-icon" />
+              <span className="icon-text">
+                <i className="fas fa-tv tab-icon " />
                 Amenities
               </span>
             }
             key="1"
           >
-            <div className="dVjtBg_ihJ63cZB8GwE0g text-truncate">
+            <div className="dVjtBg_ihJ63cZB8GwE0g text-truncate icon-text">
               <ApartmentAmentityView
                 apartment={apartment}
                 limit="20"
@@ -35,12 +36,25 @@ class TabPane extends Component {
           </TabPane>
           <TabPane
             tab={
-              <span>
+              <span className="icon-text">
+                <i className="far fa-money-bill-alt tab-icon" /> Price
+              </span>
+            }
+            key="2"
+          >
+            <Card.Grid style={gridStyle}>
+              <i className="fas fa-euro-sign tab-icon" />
+              {apartment.price} / Month
+            </Card.Grid>
+          </TabPane>
+          <TabPane
+            tab={
+              <span className="icon-text">
                 <i className="fas fa-ruler-combined tab-icon" />
                 Size
               </span>
             }
-            key="2"
+            key="3"
           >
             <Card.Grid style={gridStyle}>
               <i className="fas fa-ruler-combined tab-icon" />
@@ -50,17 +64,20 @@ class TabPane extends Component {
 
           <TabPane
             tab={
-              <span>
+              <span className="icon-text">
                 <i className="fas fa-concierge-bell tab-icon" />
                 Services
               </span>
             }
-            key="3"
+            key="4"
           >
             <ul>
               {apartment.services.map((data, index) => {
                 return (
-                  <div key={"index1" + index + new Date().getSeconds()}>
+                  <div
+                    key={"index1" + index + new Date().getSeconds()}
+                    className="icon-text"
+                  >
                     <Card.Grid style={gridStyle}>
                       <i className={IconMapping[data]} />
                       {data}
@@ -72,20 +89,23 @@ class TabPane extends Component {
           </TabPane>
           <TabPane
             tab={
-              <span>
+              <span className="icon-text">
                 <i className="fas fa-info-circle tab-icon" />
                 Details
               </span>
             }
-            key="4"
+            key="5"
           >
             {details.map((data, index) => {
               if (data !== "__typename") {
                 return (
-                  <div key={"index2" + index + new Date().getSeconds()}>
+                  <div
+                    key={"index2" + index + new Date().getSeconds()}
+                    className="icon-text"
+                  >
                     <Card.Grid style={gridStyle}>
                       <i className={IconMapping[data]} />
-                      {data} {apartment.details[data]}
+                      {data} = {apartment.details[data]}
                     </Card.Grid>
                   </div>
                 );
@@ -94,14 +114,14 @@ class TabPane extends Component {
           </TabPane>
           <TabPane
             tab={
-              <span>
+              <span className="icon-text">
                 <i className="fas fa-user tab-icon" />
                 Owner
               </span>
             }
-            key="5"
+            key="6"
           >
-            <div className="_17om8IEGFeu2W2TBOJ6xQs Lsdn2hC-tehVod76x4HzK text-truncate">
+            <div className="_17om8IEGFeu2W2TBOJ6xQs Lsdn2hC-tehVod76x4HzK text-truncate icon-text ">
               <label>
                 <i className="fas fa-user tab-icon" />
                 Owner:
