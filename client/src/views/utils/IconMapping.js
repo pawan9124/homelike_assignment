@@ -11,6 +11,6 @@ export const IconMapping = {
   microwave: "fas fa-digital-tachograph tab-icon",
   concierge: "fas fa-concierge-bell tab-icon",
   cleaning: "fas fa-broom tab-icon tab-icon",
-  fullFridge: "fas fa-temperature-low",
+  fullFridge: "fas fa-temperature-low tab-icon",
   laundry: "fas fa-tshirt tab-icon"
 };
