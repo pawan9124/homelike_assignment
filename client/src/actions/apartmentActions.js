@@ -10,13 +10,13 @@ export const fetchApartment = _id => dispatch => {
       apartment(_id: "${_id}") {
         _id
         owner {
-        _id
+          _id
           email
           profile {
-                  firstName
-                  lastName
-                  role
-                }
+            firstName
+            lastName
+            role
+          }
         } 
         title
         size
@@ -30,12 +30,10 @@ export const fetchApartment = _id => dispatch => {
           bathrooms
         } 
         services
-        location {
-          _id
-          title
-        } 
       }
-    }`
+      
+    }`,
+      options: () => ({ fetchPolicy: "network-only" })
     })
     .then(apartment => {
       console.log("APARTMENT++++", apartment);
