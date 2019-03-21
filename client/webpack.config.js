@@ -1,7 +1,6 @@
 const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const json = require("json-loader!./file.json");
 
 module.exports = {
   entry: [
@@ -45,11 +44,6 @@ module.exports = {
     path: path.resolve(__dirname, "dist/"),
     publicPath: "/dist/",
     filename: "bundle.js"
-  },
-  optimization: {
-    splitChunks: {
-      chunks: "all"
-    }
   },
   devServer: {
     contentBase: path.join(__dirname, "public"),
