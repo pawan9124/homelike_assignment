@@ -1,9 +1,63 @@
-Refactor List
-===========================
 
-1. Adding javascript enable message
-2. Problems of Users instead of profile and its returning data (Server Side)
-3. ApartmentTileView removing changing <a> to link
-4. adding switch to route for not found
-5. Arrange the apartment apartment
-6. Display page of apartment image
+//======================================================================//
+                        REFACTORING OF CODE
+//======================================================================//
+
+1. Added Prop-types to components
+
+Reason:- PropTypes make component safe to use, it will throw error if its requirements is not supplied.
+
+----------------------------------------------------------------------
+
+2. Structured and grouped components to make them reusable
+
+Reason:- Ease of maintaining the code and terms of usability (example in  filter Components section 5 filters uses three usable components)
+
+----------------------------------------------------------------------
+
+3. Added React Lazy loading for code splitting
+
+Reason:- Used Lazy loading method to load only required components at a time according to routes, result in fast loading.
+
+----------------------------------------------------------------------
+4. Added Switch component to the Router 
+
+Reason:- Switch Component to match routes against routes and provide not-found for wrong route
+
+----------------------------------------------------------------------
+
+5. Added extrnal library Antd and import only necessary file to reduce bundle size
+
+Reason:- Extranl Library imports whole library on import, so include only components necessary from  file.
+
+----------------------------------------------------------------------
+
+6. Improved the display of apartment lists
+
+Reason:- Apartment view sections is not responsive, so make it responsive.
+
+----------------------------------------------------------------------
+
+7. Babel support for the arrow function for manual webpack
+
+Reason:- Support of arrow function can save coding space of binding functions if constructor is not used component;
+
+----------------------------------------------------------------------
+
+9. Replace the routing from <a target="blank" href> to <Link> for routing in same page
+
+Reason:- In code <a> replaced with Link for routing in same page utilize react-router-dom functionality.
+
+----------------------------------------------------------------------
+
+10. Modify the Apartment View section
+
+Reason:- Removed previous view and added new view with image gallery and tabs to display its details
+
+----------------------------------------------------------------------
+
+11. Changed ComponentWillMount to ComponentDidMount 
+
+Reason:- ComponentWillMount will be depricated for React in major release and  fetching api's should be done in ComponentDidMount as it rendered after mounting of component so to setState.
+
+---------------------------------------------------------------------
