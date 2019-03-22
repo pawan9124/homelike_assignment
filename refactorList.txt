@@ -11,7 +11,7 @@ Reason:- PropTypes make component safe to use, it will throw error if its requir
 
 2. Structured and grouped components to make them reusable
 
-Reason:- Ease of maintaining the code and terms of usability (example in  filter Components section 5 filters uses three usable components)
+Reason:- Ease of maintaining the code and terms of usability of component(example in  filter Components section 5 filters uses three usable components)
 
 ----------------------------------------------------------------------
 
@@ -60,4 +60,9 @@ Reason:- Removed previous view and added new view with image gallery and tabs to
 
 Reason:- ComponentWillMount will be depricated for React in major release and  fetching api's should be done in ComponentDidMount as it rendered after mounting of component so to setState.
 
+---------------------------------------------------------------------
+
+12. Server side error of GraphQL when fetching Owner details
+
+Reason:-  I Need to fix server side error of User not defined in the project while fetching the owner details
 ---------------------------------------------------------------------
